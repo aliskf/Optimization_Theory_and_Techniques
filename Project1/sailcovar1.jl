@@ -9,7 +9,7 @@ m = Model(with_optimizer(Clp.Optimizer))
 @variable(m, h[1:6] >= 0)             # boats held in inventory
 @constraint(m, h[1] == 15)
 @constraint(m, h[5] >= 10)
-@constraint(m, flow[i in 1:5], h[i]+x[i]+y[i]==d[i]+h[i+1])     # conservation of boats
+@constraint(m, flow[i in 2:5], h[i]+x[i]+y[i]==d[i]+h[i+1])     # conservation of boats
 @objective(m, Min, 400*sum(x) + 450*sum(y) + 20*sum(h))         # minimize costs
 
 optimize!(m)
