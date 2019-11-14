@@ -5,7 +5,7 @@ d = [40 60 75 25 36]                   # monthly demand for boats
 m = Model(with_optimizer(Clp.Optimizer))
 
 @variable(m, 0 <= x[1:5] <= 40)       # boats produced with regular labor
-@variable(m, y[1:4] >= 0)             # boats produced with overtime labor
+@variable(m, y[1:5] >= 0)             # boats produced with overtime labor
 @variable(m, h[1:6] >= 0)             # boats held in inventory
 @constraint(m, h[1] == 15)
 @constraint(m, h[5] >= 10)
